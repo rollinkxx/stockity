@@ -27,7 +27,7 @@ The successful [Android CI run 36533751617](https://github.com/rollinkxx/stockit
 
 `TradingSafety` permits a future demo order only when all of the following are true together: account mode is positively classified as `DEMO`, market data status is `VALID`, risk checks pass, and the emergency stop is inactive. `REAL`, `UNKNOWN`, stale, disconnected, or unconfigured conditions fail closed. `requireDemoTradeAllowed` throws before any future execution provider can be called. There is **no order provider** in this build.
 
-The UI displays `ACCOUNT MODE: UNKNOWN` and `MARKET DATA: UNCONFIGURED`. Its demo-trading controls are disabled. The external website button only opens Stockity's public website in the user's browser; credentials are not entered into this app.
+The UI displays `ACCOUNT MODE: UNKNOWN` and `MARKET DATA: UNCONFIGURED`. Its demo-trading controls are disabled. The external website button opens `https://stockity.com/trading` in the user's browser; credentials are not entered into this app, and changing this informational link does not connect the app to Stockity.
 
 ## Stockity integration discovery
 

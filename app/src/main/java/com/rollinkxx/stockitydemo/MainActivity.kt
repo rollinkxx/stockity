@@ -101,7 +101,7 @@ private fun DashboardScreen() {
             }
         }
 
-        val registrationIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://stockity.tr/"))
+        val registrationIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://stockity.com/trading"))
         OutlinedButton(onClick = { context.startActivity(registrationIntent) }, modifier = Modifier.fillMaxWidth()) {
             Text("Open official Stockity website")
         }
