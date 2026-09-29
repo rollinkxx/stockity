@@ -1,0 +1,56 @@
+name: Android CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  android:
+    name: Lint, test, and build APKs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Install Android SDK packages
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Lint and unit tests
+        run: ./gradlew --no-daemon lint testDebugUnitTest
+
+      - name: Assemble debug and release APKs
+        run: ./gradlew --no-daemon assembleDebug assembleRelease
+
+      - name: Prepare APK names and SHA-256 checksums
+        run: |
+          mkdir -p artifacts
+          cp app/build/outputs/apk/debug/app-debug.apk artifacts/StockityDemoTrader-debug.apk
+          cp app/build/outputs/apk/release/app-release-unsigned.apk artifacts/StockityDemoTrader-release-unsigned.apk
+          cd artifacts
+          sha256sum *.apk > SHA256SUMS.txt
+
+      - name: Upload APKs and checksums
+        uses: actions/upload-artifact@v4
+        with:
+          name: StockityDemoTrader-${{ github.sha }}
+          path: artifacts/*
+          if-no-files-found: error
+          retention-days: 30
