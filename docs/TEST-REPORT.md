@@ -12,4 +12,4 @@ Command: `./gradlew --no-daemon lint testDebugUnitTest assembleDebug assembleRel
 
 ## GitHub Actions
 
-The first run failed during Android SDK setup, before lint or compilation. The `android-actions/setup-android@v3` action attempted to install the legacy SDK package named `tools`, which the current runner's SDK manager no longer publishes. The workflow was changed to use the runner's preinstalled Android SDK manager directly and install only the required platform/build-tools packages. Remote CI verification is pending the rerun; no hosted artifact is claimed yet.
+The first run failed in the Android SDK setup action because it attempted to install the legacy SDK package named `tools`, which the current runner's SDK manager no longer publishes. The workflow was changed to use the runner's preinstalled SDK manager. The second run accepted SDK licenses but the `yes` process then returned a broken-pipe status, causing the shell's `pipefail` to fail the step. The workflow now tolerates that expected license-input pipe exit while keeping the actual platform/build-tools installation fail-fast. A new remote CI run is pending; no hosted artifact is claimed yet.
