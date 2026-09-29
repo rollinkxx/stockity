@@ -15,13 +15,13 @@ A native Kotlin + Jetpack Compose foundation for a **demo-only** trading/researc
 | Demo execution / auto trading | Disabled; no order provider or supported order API is implemented |
 | Chart UI, import screen, journal, analytics dashboard | Not implemented in this milestone |
 | Local Android lint/tests/build | Passed; 15 unit tests passed |
-| GitHub Actions APK build | Passed for the current source commit in [run 36533751617](https://github.com/rollinkxx/stockity/actions/runs/36533751617); debug and unsigned release APKs uploaded |
+| GitHub Actions APK build | Passed for the website-link update in [run 36567388135](https://github.com/rollinkxx/stockity/actions/runs/36567388135); debug and unsigned release APKs uploaded |
 | Signed release APK | Not available; release output is unsigned |
 | Repository license | Not selected; `LICENSE` intentionally grants no license |
 
 ## Latest build artifacts
 
-The successful [Android CI run 36533751617](https://github.com/rollinkxx/stockity/actions/runs/36533751617) was built from commit `29b8893017781719d264233e3a00fff837556075`. It includes the debug APK and an unsigned release APK; the debug package is `com.rollinkxx.stockitydemo.debug` (`0.1.0-debug`, min SDK 26). SHA-256 values are recorded in [the test report](docs/TEST-REPORT.md). The debug APK is development-signed; the release APK is not signed.
+The successful [Android CI run 36567388135](https://github.com/rollinkxx/stockity/actions/runs/36567388135) was built from commit `1d58734f2a488909e096f55fd55268c4ba350f1b`. It includes the debug APK and an unsigned release APK; the debug package is `com.rollinkxx.stockitydemo.debug` (`0.1.0-debug`, min SDK 26). SHA-256 values are recorded in [the test report](docs/TEST-REPORT.md). The debug APK is development-signed; the release APK is not signed.
 
 ## Safety contract
 
